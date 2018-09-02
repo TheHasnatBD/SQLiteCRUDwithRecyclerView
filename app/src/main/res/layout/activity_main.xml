@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:padding="5dp"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:layout_marginTop="60dp"
+        android:id="@+id/nameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Name"
+        android:inputType="textPersonName"
+        />
+    <EditText
+        android:id="@+id/deptInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Dept"
+        android:inputType="text"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="S a v e"
+        android:onClick="addStudentBtn"
+        android:id="@+id/addStdBtn"
+        android:background="@color/colorPrimary"
+        android:textColor="#fff"
+        android:layout_marginTop="30dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="V i e w   L i s t"
+        android:textAllCaps="false"
+        android:onClick="goToStdListBtn"
+        android:id="@+id/goToStdListBtn"
+        android:background="@color/colorPrimary"
+        android:textColor="#fff"
+        android:layout_marginTop="15dp"        />
+
+
+</LinearLayout>
