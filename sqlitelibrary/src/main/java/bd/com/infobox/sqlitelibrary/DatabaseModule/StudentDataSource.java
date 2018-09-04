@@ -26,9 +26,7 @@ public class StudentDataSource {
     }
 
     public boolean insertStudent(Student student){
-
         this.open();
-
         ContentValues values = new ContentValues();
         values.put(MyDatabaseHelper.COL_NAME, student.getName());
         values.put(MyDatabaseHelper.COL_DEPT, student.getDept());
@@ -46,7 +44,6 @@ public class StudentDataSource {
 
     public List<Student> getStudentInfo(){
         this.open();
-
         List<Student> students = new ArrayList<>();
         Cursor cursor = database.rawQuery("select * from " + MyDatabaseHelper.TABLE_STD_INFO, null);
 
