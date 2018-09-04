@@ -50,19 +50,7 @@ public class StudentListActivity extends AppCompatActivity {
         student_list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String name = students.get(i).getName();
-                int id = students.get(i).getId();
 
-                boolean deleted_status = studentDataSource.deleteRow(id);
-
-                if (deleted_status){
-                    Snackbar.make(view, "Deleted " + name, 1500).show();
-                    students.remove(i);
-                    adapter.notifyDataSetChanged();
-
-                } else {
-                    Snackbar.make(view, "Failed to delete", 1000).show();
-                }
 
                 return false;
             }
