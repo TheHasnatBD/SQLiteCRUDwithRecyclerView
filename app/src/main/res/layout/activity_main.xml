@@ -60,6 +60,16 @@
         android:background="@color/colorPrimary"
         android:textColor="#fff"
         android:layout_marginTop="30dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="U p d a t e"
+        android:id="@+id/updateStudentBtn"
+        android:onClick="updateStudentBtn"
+        android:background="@color/colorPrimary"
+        android:textColor="#fff"
+        android:visibility="gone"
+        />
 
     <Button
         android:layout_width="match_parent"

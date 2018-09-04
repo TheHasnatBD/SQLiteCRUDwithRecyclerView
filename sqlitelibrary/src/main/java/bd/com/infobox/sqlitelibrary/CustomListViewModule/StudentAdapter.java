@@ -1,6 +1,7 @@
 package bd.com.infobox.sqlitelibrary.CustomListViewModule;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -58,15 +59,21 @@ public class StudentAdapter extends ArrayAdapter<Student> {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-
                         studentDataSource = new StudentDataSource(context);
+                        int id = students.get(position).getId();
 
                         if (menuItem.getItemId() == R.id.edit_menu){
+                            try {
+                                Intent intent = new Intent(context, Class.forName("bd.com.infobox.sqlite_recyclerview.MainActivity"));
+                                intent.putExtra("id", id);
+                                context.startActivity(intent);
+
+                            } catch (ClassNotFoundException e) {
+                                e.printStackTrace();
+                            }
 
                         } else if (menuItem.getItemId() == R.id.delete_menu){
-                            int id = students.get(position).getId();
                             boolean deleted_status = studentDataSource.deleteRow(id);
-
                             if (deleted_status){
                                 students.remove(position);
                                 notifyDataSetChanged();

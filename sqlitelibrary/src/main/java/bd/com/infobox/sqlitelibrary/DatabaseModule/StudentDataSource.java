@@ -30,15 +30,15 @@ public class StudentDataSource {
         ContentValues values = new ContentValues();
         values.put(MyDatabaseHelper.COL_NAME, student.getName());
         values.put(MyDatabaseHelper.COL_DEPT, student.getDept());
+        values.put(MyDatabaseHelper.COL_GENDER, student.getGender());
+        values.put(MyDatabaseHelper.COL_YEAR, student.getYear());
 
         long insertedRow = database.insert(MyDatabaseHelper.TABLE_STD_INFO, null, values);
-
         this.close();
 
         if (insertedRow > 0){
             return true;
         }
-
         return false;
     }
 
@@ -60,11 +60,31 @@ public class StudentDataSource {
 
             }while (cursor.moveToNext());
         }
-
         cursor.close();
         this.close();
 
         return students;
+    }
+
+    public Student getStudentInfoByID(int id){
+        this.open();
+        Student student = null;
+
+        Cursor cursor = database.query(MyDatabaseHelper.TABLE_STD_INFO, null,
+                MyDatabaseHelper.COL_ID +" = " + id, null, null, null, null);
+        if (cursor != null && cursor.getCount() > 0){
+            cursor.moveToNext();
+
+            String name = cursor.getString(cursor.getColumnIndex(MyDatabaseHelper.COL_NAME));
+            String dept = cursor.getString(cursor.getColumnIndex(MyDatabaseHelper.COL_DEPT));
+            String gender = cursor.getString(cursor.getColumnIndex(MyDatabaseHelper.COL_GENDER));
+            String year = cursor.getString(cursor.getColumnIndex(MyDatabaseHelper.COL_YEAR));
+
+            student = new Student(name, dept, gender, year);
+        }
+        this.close();
+
+        return student;
     }
 
     public boolean deleteRow(int id){
@@ -80,6 +100,28 @@ public class StudentDataSource {
         }
 
         return false;
-
     }
+
+
+    public boolean updateStudent(Student student){
+        this.open();
+        ContentValues values = new ContentValues();
+        values.put(MyDatabaseHelper.COL_NAME, student.getName());
+        values.put(MyDatabaseHelper.COL_DEPT, student.getDept());
+        values.put(MyDatabaseHelper.COL_GENDER, student.getGender());
+        values.put(MyDatabaseHelper.COL_YEAR, student.getYear());
+
+        long updatedRow = database.update(
+                MyDatabaseHelper.TABLE_STD_INFO,
+                values,
+                MyDatabaseHelper.COL_ID + " = " + student.getId(),
+                null);
+        this.close();
+        if (updatedRow > 0){
+            return true;
+        }
+        return false;
+    }
+
+
 }
