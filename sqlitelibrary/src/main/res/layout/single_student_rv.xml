@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="#efefef"
+    app:cardElevation="3dp"
+    app:cardCornerRadius="2dp"
+    android:foreground="?selectableItemBackground"
+    android:padding="10dp"
+    android:layout_margin="5dp"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Abdullah Al-Hasnat"
+            android:id="@+id/rv_stdName"
+            android:textColor="#000"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rv_stdName"
+            android:text="CSE"
+            android:paddingTop="2dp"
+            android:id="@+id/rv_stdDept"
+            android:textSize="15sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rv_stdDept"
+            android:text="Male"
+            android:id="@+id/rv_stdGender"
+            android:textStyle="italic"
+            />
+
+        <ImageView
+            android:id="@+id/rv_itemMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:src="@drawable/ic_more_vert_black_24dp" />
+
+    </RelativeLayout>
+
+
+
+
+</android.support.v7.widget.CardView>

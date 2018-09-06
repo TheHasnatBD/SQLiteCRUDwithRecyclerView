@@ -10,6 +10,12 @@ public class Student {
         this.id = id;
     }
 
+    public Student(int id, String name, String dept, String gender) {
+        this(name, dept);
+        this.gender = gender;
+        this.id = id;
+    }
+
     public Student(String name, String dept) {
         this.name = name;
         this.dept = dept;

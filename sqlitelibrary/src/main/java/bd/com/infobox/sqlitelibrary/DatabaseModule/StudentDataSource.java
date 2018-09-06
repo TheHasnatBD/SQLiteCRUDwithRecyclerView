@@ -49,13 +49,13 @@ public class StudentDataSource {
 
         if (cursor != null && cursor.getCount() > 0){
             cursor.moveToFirst();
-
             do {
                 int id = cursor.getInt(cursor.getColumnIndex(MyDatabaseHelper.COL_ID));
                 String name = cursor.getString(cursor.getColumnIndex(MyDatabaseHelper.COL_NAME));
                 String dept = cursor.getString(cursor.getColumnIndex(MyDatabaseHelper.COL_DEPT));
+                String gender = cursor.getString(cursor.getColumnIndex(MyDatabaseHelper.COL_GENDER));
 
-                Student student = new Student(id, name, dept);
+                Student student = new Student(id, name, dept, gender);
                 students.add(student);
 
             }while (cursor.moveToNext());
@@ -92,9 +92,7 @@ public class StudentDataSource {
 
         int deleted_row =
                 database.delete(MyDatabaseHelper.TABLE_STD_INFO, MyDatabaseHelper.COL_ID + " = " + id, null);
-
         this.close();
-
         if (deleted_row > 0){
             return true;
         }
